@@ -18,3 +18,6 @@ Rew rew = new Rew(money, items, custom, attrs, enchs); - новый список
 cu_up.setReqs(req); cu_up.setRews(rew); - установить требования/награды\
 up_it.addCustomUpgrade(cu_up); - добавить улучшение к предмету\
 it_ma.addUpableItem(up_it); - добавить предмет в ItemManager
+
+  
+если вдруг кому-то срочно нужна помощь с апи (ну а вдруг) - дс Sturm#6360
