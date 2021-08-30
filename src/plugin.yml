@@ -1,0 +1,9 @@
+name: siu
+main: mainsiu.siu
+author: Sturm
+version: 0.0.0.1
+softdepend: [Vault, PlaceholderAPI]
+api-version: 1.13
+commands:
+  ui:
+  upgradeitem:
