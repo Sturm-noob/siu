@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import org.bukkit.Bukkit;
@@ -19,7 +20,7 @@ import net.milkbowl.vault.economy.Economy;
 
 public class Rew {
 	
-	private HashMap<Material, Integer> items = new HashMap<>();
+	private Map<Material, Integer> items = new HashMap<>();
 	private double money;
 	private List<String> open = new ArrayList<>();
 	private List<String> custom = new ArrayList<>();
@@ -27,7 +28,7 @@ public class Rew {
 	private List<Ench> enchs = new ArrayList<>();
 	private List<String> lore = new ArrayList<>();
 	
-	public Rew(double money, HashMap<Material, Integer> map, List<String> list, List<Attr> attrs, List<Ench> enchs) {
+	public Rew(double money, Map<Material, Integer> map, List<String> list, List<Attr> attrs, List<Ench> enchs) {
 		this.custom = list;
 		this.items = map;
 		this.money = money;
@@ -69,7 +70,7 @@ public class Rew {
 		return ec == null ? 0 : ec.depositPlayer(p, this.money).balance;
 	}
 	
-	public HashMap<Material, Integer> getItems() {
+	public Map<Material, Integer> getItems() {
 		return this.items;
 	}
 
