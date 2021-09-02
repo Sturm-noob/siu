@@ -107,8 +107,8 @@ public class Req {
 				cmd = cmd.substring(7, cmd.length() - 1);
 				String[] y = cmd.split(",");
 				if (y.length != 2) {
-					Bukkit.getLogger().info("Îøèáêà â óñëîâèè: " + cmd);
-					Bukkit.getLogger().info("Êîëè÷åñòâî àğãóìåíòîâ äîëæíî áûòü ğàâíî äâóì.");
+					Bukkit.getLogger().info("ĞÑˆĞ¸Ğ±ĞºĞ° Ğ² ÑƒÑĞ»Ğ¾Ğ²Ğ¸Ğ¸: " + cmd);
+					Bukkit.getLogger().info("ĞšĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ°Ñ€Ğ³ÑƒĞ¼ĞµĞ½Ñ‚Ğ¾Ğ² Ğ´Ğ¾Ğ»Ğ¶Ğ½Ğ¾ Ğ±Ñ‹Ñ‚ÑŒ Ñ€Ğ°Ğ²Ğ½Ğ¾ Ğ´Ğ²ÑƒĞ¼.");
 					continue;
 				}
 				if (!y[0].trim().equalsIgnoreCase(y[1].trim())) ret.add(command);
@@ -118,13 +118,13 @@ public class Req {
 			if (cmd.contains("==")) {
 				String[] y = cmd.split("==");
 				if (y.length != 2) {
-					Bukkit.getLogger().info("Îøèáêà â óñëîâèè: " + cmd);
-					Bukkit.getLogger().info("Êîëè÷åñòâî àğãóìåíòîâ äîëæíî áûòü ğàâíî äâóì.");
+					Bukkit.getLogger().info("ĞÑˆĞ¸Ğ±ĞºĞ° Ğ² ÑƒÑĞ»Ğ¾Ğ²Ğ¸Ğ¸: " + cmd);
+					Bukkit.getLogger().info("ĞšĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ°Ñ€Ğ³ÑƒĞ¼ĞµĞ½Ñ‚Ğ¾Ğ² Ğ´Ğ¾Ğ»Ğ¶Ğ½Ğ¾ Ğ±Ñ‹Ñ‚ÑŒ Ñ€Ğ°Ğ²Ğ½Ğ¾ Ğ´Ğ²ÑƒĞ¼.");
 					continue;
 				}
 				if (!isDouble(y[0].trim()) || !isDouble(y[1].trim())) {
-					Bukkit.getLogger().info("Îøèáêà â óñëîâèè: " + cmd);
-					Bukkit.getLogger().info("Îáà àãğóìåíòà äîëæíû áûòü ÷èñëàìè");
+					Bukkit.getLogger().info("ĞÑˆĞ¸Ğ±ĞºĞ° Ğ² ÑƒÑĞ»Ğ¾Ğ²Ğ¸Ğ¸: " + cmd);
+					Bukkit.getLogger().info("ĞĞ±Ğ° Ğ°Ğ³Ñ€ÑƒĞ¼ĞµĞ½Ñ‚Ğ° Ğ´Ğ¾Ğ»Ğ¶Ğ½Ñ‹ Ğ±Ñ‹Ñ‚ÑŒ Ñ‡Ğ¸ÑĞ»Ğ°Ğ¼Ğ¸");
 				}
 
 				if (cmd.contains("==") || cmd.contains(">") || cmd.contains("<")) {
@@ -152,13 +152,13 @@ public class Req {
 		}
 		if (y == null) return true;
 		if (y.length != 2) {
-			Bukkit.getLogger().info("Îøèáêà â óñëîâèè: " + cmd);
-			Bukkit.getLogger().info("Êîëè÷åñòâî àğãóìåíòîâ äîëæíî áûòü ğàâíî äâóì.");
+			Bukkit.getLogger().info("ĞÑˆĞ¸Ğ±ĞºĞ° Ğ² ÑƒÑĞ»Ğ¾Ğ²Ğ¸Ğ¸: " + cmd);
+			Bukkit.getLogger().info("ĞšĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ°Ñ€Ğ³ÑƒĞ¼ĞµĞ½Ñ‚Ğ¾Ğ² Ğ´Ğ¾Ğ»Ğ¶Ğ½Ğ¾ Ğ±Ñ‹Ñ‚ÑŒ Ñ€Ğ°Ğ²Ğ½Ğ¾ Ğ´Ğ²ÑƒĞ¼.");
 			return true;
 		}
 		if (!isDouble(y[0].trim()) || !isDouble(y[1].trim())) {
-			Bukkit.getLogger().info("Îøèáêà â óñëîâèè: " + cmd);
-			Bukkit.getLogger().info("Îáà àãğóìåíòà äîëæíû áûòü ÷èñëàìè");
+			Bukkit.getLogger().info("ĞÑˆĞ¸Ğ±ĞºĞ° Ğ² ÑƒÑĞ»Ğ¾Ğ²Ğ¸Ğ¸: " + cmd);
+			Bukkit.getLogger().info("ĞĞ±Ğ° Ğ°Ğ³Ñ€ÑƒĞ¼ĞµĞ½Ñ‚Ğ° Ğ´Ğ¾Ğ»Ğ¶Ğ½Ñ‹ Ğ±Ñ‹Ñ‚ÑŒ Ñ‡Ğ¸ÑĞ»Ğ°Ğ¼Ğ¸");
 			return true;
 		}
 		double[] z = new double[]{Double.parseDouble(y[0]), Double.parseDouble(y[1])};
@@ -182,7 +182,7 @@ public class Req {
 		return (money <= 0 && items.isEmpty() && custom.isEmpty());
 	}
 	
-	//Map.copyOf âûäà¸ò NoSuchMethodError, ïîıòîìó òàê
+	//Map.copyOf Ğ²Ñ‹Ğ´Ğ°Ñ‘Ñ‚ NoSuchMethodError, Ğ¿Ğ¾ÑÑ‚Ğ¾Ğ¼Ñƒ Ñ‚Ğ°Ğº
 	private Map<Material, Integer> copy(Map<Material, Integer> map)  {
 		Map<Material, Integer> ret = new HashMap<Material, Integer>();
 		map.entrySet().forEach(x -> ret.put(x.getKey(), x.getValue()));
