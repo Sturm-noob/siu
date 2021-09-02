@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.logging.Logger;
@@ -61,6 +62,7 @@ public class siu extends JavaPlugin  {
 		catch (IOException e) {e.printStackTrace();}
 		
 		Logger log = Bukkit.getLogger();
+		
 		if (!setupEconomy() ) {
 			log.warning("Вы знали, что у вас не установлен Vault?");
 			log.warning("Я, конечно, не заставляю его ставить,");
@@ -68,7 +70,7 @@ public class siu extends JavaPlugin  {
 			log.warning("поздравляю вас, она не работает.");
 			log.warning("А ещё могут выползти ошибки. Не должны, но могут.");
 			log.warning("И вообще, Vault - хорошая вещь. Лучше поставить.");
-		}
+        }
 		
 		if (!isPAPI() ) {
 			log.warning("Вы знали, что у вас не установлено PlaceholderAPI?");
@@ -78,6 +80,7 @@ public class siu extends JavaPlugin  {
 			log.warning("А ещё могут выползти ошибки. Не должны, но могут.");
 			log.warning("И вообще, PlaceholderAPI - хорошая вещь. Лучше поставить.");
 		}
+		
 		MenuExecutor ex = new MenuExecutor(im);
 		getCommand("ui").setExecutor(ex);
 		getCommand("upgradeitem").setExecutor(ex);
@@ -92,6 +95,7 @@ public class siu extends JavaPlugin  {
 		ItemManager im = new ItemManager();
 		
 		for (String key : c.getKeys(false)) {
+
 			UpableItem ui = new UpableItem(Material.getMaterial(key));
 			
 			for (String id : c.getConfigurationSection(key).getKeys(false)) {
@@ -100,7 +104,7 @@ public class siu extends JavaPlugin  {
 				ConfigurationSection need = c.getConfigurationSection(key + "." + id + ".need");
 				if (need != null) {
 					int money = need.getInt("money");
-					HashMap<Material, Integer> items = getItems(getStringList(need, "items"));
+					Map<Material, Integer> items = getItems(getStringList(need, "items"));
 					List<String> custom = need.getStringList("custom");
 					Req r = new Req(money, items, custom);
 					r.setLore(getStringList(need, "lore"));
@@ -111,7 +115,7 @@ public class siu extends JavaPlugin  {
 				
 				if (reward != null) {
 					int money = reward.getInt("money");
-					HashMap<Material, Integer> items = getItems(getStringList(reward, "items"));
+					Map<Material, Integer> items = getItems(getStringList(reward, "items"));
 					List<String> custom = getStringList(reward, "custom");
 					List<Attr> attrs = getAttrs(getStringList(reward, "attributes"));
 					List<Ench> enchs = getEnchs(getStringList(reward, "enchantments"));
@@ -160,8 +164,8 @@ public class siu extends JavaPlugin  {
 		return ret;
 	}
 	
-	private HashMap<Material, Integer> getItems(List<String> a) {
-		HashMap<Material, Integer> items = new HashMap<>();
+	private Map<Material, Integer> getItems(List<String> a) {
+		Map<Material, Integer> items = new HashMap<>();
 		getEntry(a).forEach(x -> items.put(Material.matchMaterial(x.getKey()), x.getValue().intValue()));
 		return items;
 	}
@@ -179,7 +183,7 @@ public class siu extends JavaPlugin  {
 	}
 	
 	private Set<Entry<String, Double>> getEntry(List<String> a) {
-		HashMap<String, Double> ret = new HashMap<>();
+		Map<String, Double> ret = new HashMap<>();
 		for (String s : a) {
 			if (s.isEmpty()) continue;
 			String[] y = s.split(",");
