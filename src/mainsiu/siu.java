@@ -41,7 +41,7 @@ public class siu extends JavaPlugin  {
 		loadIcon(config.getConfigurationSection("icon"));
 		ItemManager im = loadMaterials(config.getConfigurationSection("items"));
 		if (im == null) {
-			Bukkit.getLogger().info("Ошибка при загрузке предметов");
+			Bukkit.getLogger().info("РћС€РёР±РєР° РїСЂРё Р·Р°РіСЂСѓР·РєРµ РїСЂРµРґРјРµС‚РѕРІ");
 			getServer().getPluginManager().disablePlugin(this);
 		}
 		this.im = im;
@@ -50,40 +50,34 @@ public class siu extends JavaPlugin  {
 		if (!lang.exists()) {
 			try {
 				lang.createNewFile();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			} 
+			catch (IOException e) {e.printStackTrace();}
 		}
 		YamlConfiguration l = YamlConfiguration.loadConfiguration(lang);
 		l = SiuLang.setMessages(l);
 		try {
 			l.save(lang);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
+		catch (IOException e) {e.printStackTrace();}
 		
 		Logger log = Bukkit.getLogger();
-		
 		if (!setupEconomy() ) {
-			log.warning("Вы знали, что у вас не установлен Vault?");
-            log.warning("Я, конечно, не заставляю его ставить,");
-            log.warning("Но если в конфиге siu у вас где-то есть строчка money - ");
-            log.warning("поздравляю вас, она не работает.");
-            log.warning("А ещё могут выползти ошибки. Не должны, но могут.");
-            log.warning("И вообще, Vault - хорошая вещь. Лучше поставить.");
-        }
-		
-		if (!isPAPI() ) {
-			log.warning("Вы знали, что у вас не установлено PlaceholderAPI?");
-            log.warning("Я, конечно, не заставляю его ставить,");
-            log.warning("Но если в конфиге siu у вас где-то есть команды");
-            log.warning("с вашими заполнителями - поздравляю вас, они не работают.");
-            log.warning("А ещё могут выползти ошибки. Не должны, но могут.");
-            log.warning("И вообще, PlaceholderAPI - хорошая вещь. Лучше поставить.");
+			log.warning("Р’С‹ Р·РЅР°Р»Рё, С‡С‚Рѕ Сѓ РІР°СЃ РЅРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅ Vault?");
+			log.warning("РЇ, РєРѕРЅРµС‡РЅРѕ, РЅРµ Р·Р°СЃС‚Р°РІР»СЏСЋ РµРіРѕ СЃС‚Р°РІРёС‚СЊ,");
+			log.warning("РќРѕ РµСЃР»Рё РІ РєРѕРЅС„РёРіРµ siu Сѓ РІР°СЃ РіРґРµ-С‚Рѕ РµСЃС‚СЊ СЃС‚СЂРѕС‡РєР° money - ");
+			log.warning("РїРѕР·РґСЂР°РІР»СЏСЋ РІР°СЃ, РѕРЅР° РЅРµ СЂР°Р±РѕС‚Р°РµС‚.");
+			log.warning("Рђ РµС‰С‘ РјРѕРіСѓС‚ РІС‹РїРѕР»Р·С‚Рё РѕС€РёР±РєРё. РќРµ РґРѕР»Р¶РЅС‹, РЅРѕ РјРѕРіСѓС‚.");
+			log.warning("Р РІРѕРѕР±С‰Рµ, Vault - С…РѕСЂРѕС€Р°СЏ РІРµС‰СЊ. Р›СѓС‡С€Рµ РїРѕСЃС‚Р°РІРёС‚СЊ.");
 		}
 		
+		if (!isPAPI() ) {
+			log.warning("Р’С‹ Р·РЅР°Р»Рё, С‡С‚Рѕ Сѓ РІР°СЃ РЅРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅРѕ PlaceholderAPI?");
+			log.warning("РЇ, РєРѕРЅРµС‡РЅРѕ, РЅРµ Р·Р°СЃС‚Р°РІР»СЏСЋ РµРіРѕ СЃС‚Р°РІРёС‚СЊ,");
+			log.warning("РќРѕ РµСЃР»Рё РІ РєРѕРЅС„РёРіРµ siu Сѓ РІР°СЃ РіРґРµ-С‚Рѕ РµСЃС‚СЊ РєРѕРјР°РЅРґС‹");
+			log.warning("СЃ РІР°С€РёРјРё Р·Р°РїРѕР»РЅРёС‚РµР»СЏРјРё - РїРѕР·РґСЂР°РІР»СЏСЋ РІР°СЃ, РѕРЅРё РЅРµ СЂР°Р±РѕС‚Р°СЋС‚.");
+			log.warning("Рђ РµС‰С‘ РјРѕРіСѓС‚ РІС‹РїРѕР»Р·С‚Рё РѕС€РёР±РєРё. РќРµ РґРѕР»Р¶РЅС‹, РЅРѕ РјРѕРіСѓС‚.");
+			log.warning("Р РІРѕРѕР±С‰Рµ, PlaceholderAPI - С…РѕСЂРѕС€Р°СЏ РІРµС‰СЊ. Р›СѓС‡С€Рµ РїРѕСЃС‚Р°РІРёС‚СЊ.");
+		}
 		MenuExecutor ex = new MenuExecutor(im);
 		getCommand("ui").setExecutor(ex);
 		getCommand("upgradeitem").setExecutor(ex);
@@ -128,7 +122,7 @@ public class siu extends JavaPlugin  {
 				}
 				ui.addCustomUpgrade(cu);
 			}
-			if (!im.addUpableItem(ui)) Bukkit.getLogger().info("В конфиге siu дублируется предмет " + ui.getMaterial());
+			if (!im.addUpableItem(ui)) Bukkit.getLogger().info("Р’ РєРѕРЅС„РёРіРµ siu РґСѓР±Р»РёСЂСѓРµС‚СЃСЏ РїСЂРµРґРјРµС‚ " + ui.getMaterial());
 		}
 		return im;
 	}
@@ -141,7 +135,7 @@ public class siu extends JavaPlugin  {
 		return this.im;
 	}
 	
-	private boolean setupEconomy() {    //стырил с гитхаба vault'а, мб что-то не нужно/не учтено, я не в курсе
+	private boolean setupEconomy() {    //СЃС‚С‹СЂРёР» СЃ РіРёС‚С…Р°Р±Р° vault'Р°, РјР± С‡С‚Рѕ-С‚Рѕ РЅРµ РЅСѓР¶РЅРѕ/РЅРµ СѓС‡С‚РµРЅРѕ, СЏ РЅРµ РІ РєСѓСЂСЃРµ
         if (getServer().getPluginManager().getPlugin("Vault") == null) {
             return false;
         }
@@ -215,9 +209,9 @@ public class siu extends JavaPlugin  {
 		return true;
 	}
 	
-	//Если сделать втупую return this.icon, то вернётся объект icon (логично)
-	//Тогда изменения появятся тут, а этого нам не надо
-	//Поэтому тут костыль для копирования предмета
+	//Р•СЃР»Рё СЃРґРµР»Р°С‚СЊ РІС‚СѓРїСѓСЋ return this.icon, С‚Рѕ РІРµСЂРЅС‘С‚СЃСЏ РѕР±СЉРµРєС‚ icon (Р»РѕРіРёС‡РЅРѕ)
+	//РўРѕРіРґР° РёР·РјРµРЅРµРЅРёСЏ РїРѕСЏРІСЏС‚СЃСЏ С‚СѓС‚, Р° СЌС‚РѕРіРѕ РЅР°Рј РЅРµ РЅР°РґРѕ
+	//РџРѕСЌС‚РѕРјСѓ С‚СѓС‚ РєРѕСЃС‚С‹Р»СЊ РґР»СЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РїСЂРµРґРјРµС‚Р°
 	public ItemStack getIcon() {
 		ItemStack ret = new ItemStack(icon.getType(), icon.getAmount());
 		ret.setItemMeta(icon.getItemMeta());
