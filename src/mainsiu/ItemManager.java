@@ -1,32 +1,24 @@
 package mainsiu;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.EnumMap;
 
 import org.bukkit.Material;
 
 public class ItemManager {
 	
-	private List<UpableItem> uii = new ArrayList<>();
+	private EnumMap<Material, UpableItem> uii = new EnumMap<>(Material.class);
 	
 	ItemManager() {}
 	
 	public UpableItem getByMaterial(Material m) {
-		for (UpableItem c : uii) {
-			if (c.getMaterial() == m) return c;
-		}
-		return null;
+		return uii.get(m);
 	}
 	
 	public boolean addUpableItem(UpableItem ui) {
-		if (getByMaterial(ui.getMaterial()) != null) {
-			return false;
-		}
-		uii.add(ui);
-		return true;
+		return uii.put(ui.getMaterial(), ui) != null;
 	}
 	
-	public List<UpableItem> getItems() {
+	public EnumMap<Material, UpableItem> getItems() {
 		return this.uii;
 	}
 	
