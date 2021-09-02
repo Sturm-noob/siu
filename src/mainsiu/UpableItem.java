@@ -1,18 +1,20 @@
 package mainsiu;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.LinkedHashMap;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 
 public class UpableItem {
 	
 	private Material m;
-	private List<CustomUpgrade> cus = new ArrayList<>();
+	private LinkedHashMap<String, CustomUpgrade> cus = new LinkedHashMap<>();
 
 	public UpableItem(Material m) {
 		if (m != null) this.m = m;
-		else throw new IllegalArgumentException("В конфиге siu значение одного из материалов указано неверно");
+		else {
+			Bukkit.getLogger().info("Р’ РєРѕРЅС„РёРіРµ siu Р·РЅР°С‡РµРЅРёРµ РѕРґРЅРѕРіРѕ РёР· РјР°С‚РµСЂРёР°Р»РѕРІ СѓРєР°Р·Р°РЅРѕ РЅРµРІРµСЂРЅРѕ");
+			Bukkit.getPluginManager().disablePlugin(siu.getInstance());
+		}
 	}
 	
 	public Material getMaterial() {
@@ -20,19 +22,14 @@ public class UpableItem {
 	}
 	
 	public CustomUpgrade getByID(String id) {
-		for (CustomUpgrade cu : cus) {
-			if (cu.getID().equalsIgnoreCase(id)) return cu;
-		}
-		return null;
+		return cus.get(id);
 	}
 	
 	public boolean addCustomUpgrade(CustomUpgrade cu) {
-		if (getByID(cu.getID()) != null) return false;
-		cus.add(cu);
-		return true;
+		return cus.put(cu.getID(), cu) != null;
 	}
 	
-	public List<CustomUpgrade> getUps() {
+	public LinkedHashMap<String, CustomUpgrade> getUps() {
 		return this.cus;
 	}
 
